@@ -27,7 +27,7 @@ public class ClientMain  implements IClientCallinface{
 	
 	private boolean overRUN = false;
 	
-	private final static int StaticNum = 200;
+	private final static int StaticNum = 20;
 	/**
 	 * 初始化pc(wtbweb)
 	 * @param initUserNum 待连接用户数  默认为100
@@ -70,7 +70,7 @@ public class ClientMain  implements IClientCallinface{
 				
 				//clientObject.sendMsgText("#C#"+"user"+i+":"+chatrooms.toString());
 				clientObject.sendMsgText(SocketConstant.hlUserChats.getRssURL()+"user"+i+SocketConstant.splitUC.getRssURL()+chatrooms.toString());
-				//TimeUnit.SECONDS.sleep(1);
+				TimeUnit.SECONDS.sleep(1);
 //				if(i == 5)
 //					System.out.println("111");
 //				if(i>4)
