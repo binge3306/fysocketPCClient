@@ -27,7 +27,7 @@ public class ClientMain  implements IClientCallinface{
 	
 	private boolean overRUN = false;
 	
-	private final static int StaticNum = 20;
+	private final static int StaticNum = 200;
 	/**
 	 * 初始化pc(wtbweb)
 	 * @param initUserNum 待连接用户数  默认为100
