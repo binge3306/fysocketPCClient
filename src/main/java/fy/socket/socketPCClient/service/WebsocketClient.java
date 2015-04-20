@@ -23,8 +23,8 @@ public class WebsocketClient {
 	
 	private IClientCallinface clientIm;
 	
-	private final static int PORT = 8866;
-	private final static String HOST = "localhost";
+//	private final static int PORT = 8866;
+//	private final static String HOST = "222.201.139.162";// "localhost";
 	public WebsocketClient(){
 		
 	}
@@ -34,8 +34,8 @@ public class WebsocketClient {
 	
 
 	
-	public IWebsocketClientObject createConnection(){
-		return new ClientImpl();
+	public IWebsocketClientObject createConnection(int port,String host){
+		return new ClientImpl( port, host);
 	}
 	
 	final class ClientImpl implements IWebsocketClientObject{
@@ -47,19 +47,19 @@ public class WebsocketClient {
 		private DataOutputStream dout;
 		private DataInputStream din;
 		
-		private ClientImpl(){
+		private ClientImpl(int port,String host){
 			
 			try {
-				init();
+				init(port,host);
 			} catch (IOException e) {
 				logger.log(Level.INFO,"初始化 socket 连接失败 （client）");
 			}  
 		}
-		private final void init() throws  IOException{
+		private final void init(int port,String host) throws  IOException{
 			// 初始化连接
 			// 发送连接请求  验证用户
 			if(clientS == null)
-				clientS  = new Socket(HOST,PORT);
+				clientS  = new Socket(host,port);
 			if(verifyUser()){
 				// 验证用户
 				logger.log(Level.INFO,"吾托帮web用户身份被通过！！");

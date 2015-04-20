@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.fy.socket.MultMain;
+
 import fy.socket.socketPCClient.exception.AuthException;
 import fy.socket.socketPCClient.exception.ConnectException;
 import fy.socket.socketPCClient.interf.IClientCallinface;
@@ -16,12 +18,16 @@ import fy.socket.socketPCClient.util.SocketConstant;
 
 public class ClientMain  implements IClientCallinface{
 
+	
+	private final static int PORT = 8866;
+	private final static String HOST = "222.201.139.162";// "localhost";
+	
 	private IWebsocketClientObject clientObject;
 	private int initUserNum = 0;
 	
 	private boolean overRUN = false;
 	
-	private final static int StaticNum = 20;
+	private final static int StaticNum = 200;
 	/**
 	 * 初始化pc(wtbweb)
 	 * @param initUserNum 待连接用户数  默认为100
@@ -34,7 +40,7 @@ public class ClientMain  implements IClientCallinface{
 	
 	public void init( ){
 		if(clientObject == null){
-			clientObject = new WebsocketClient(this).createConnection();
+			clientObject = new WebsocketClient(this).createConnection(PORT,HOST);
 		}
 	}
 	
@@ -64,12 +70,24 @@ public class ClientMain  implements IClientCallinface{
 				
 				//clientObject.sendMsgText("#C#"+"user"+i+":"+chatrooms.toString());
 				clientObject.sendMsgText(SocketConstant.hlUserChats.getRssURL()+"user"+i+SocketConstant.splitUC.getRssURL()+chatrooms.toString());
-				TimeUnit.SECONDS.sleep(1);
+				//TimeUnit.SECONDS.sleep(1);
 //				if(i == 5)
 //					System.out.println("111");
 //				if(i>4)
 //					TimeUnit.SECONDS.sleep(60);
 			}
+			TimeUnit.SECONDS.sleep(2);
+//			System.out.println("---------------------begin 收发—------------------------------------");
+//			
+//			new Thread(new Runnable() {
+//				
+//				@Override
+//				public void run() {
+//					String[] ma = {};
+//					new MultMain().start(ma);
+//				}
+//			}).start();
+			
 			Thread.yield();
 			TimeUnit.SECONDS.sleep(120);
 			while(!overRUN){
@@ -193,11 +211,6 @@ public class ClientMain  implements IClientCallinface{
 		}
 		new ClientMain(connectNum).start();
 	}
-
-
-
-
-
 
 
 }
