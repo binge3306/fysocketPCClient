@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.fy.socket.MultMain;
 
 import fy.socket.socketPCClient.exception.AuthException;
 import fy.socket.socketPCClient.exception.ConnectException;
