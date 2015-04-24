@@ -15,7 +15,7 @@ import fy.socket.socketPCClient.util.ExceptionConstants;
 import fy.socket.socketPCClient.util.SocketConstant;
 
 
-public class ClientMain  implements IClientCallinface{
+public class wtbClientMain  implements IClientCallinface{
 
 	
 	private final static int PORT = 8866;
@@ -26,12 +26,12 @@ public class ClientMain  implements IClientCallinface{
 	
 	private boolean overRUN = false;
 	
-	private final static int StaticNum = 200;
+	private final static int StaticNum = 100;
 	/**
 	 * 初始化pc(wtbweb)
 	 * @param initUserNum 待连接用户数  默认为100
 	 */
-	public ClientMain(int initUserNum){
+	public wtbClientMain(int initUserNum){
 		this.initUserNum = initUserNum;
 		init();
 		
@@ -69,7 +69,7 @@ public class ClientMain  implements IClientCallinface{
 				
 				//clientObject.sendMsgText("#C#"+"user"+i+":"+chatrooms.toString());
 				clientObject.sendMsgText(SocketConstant.hlUserChats.getRssURL()+"user"+i+SocketConstant.splitUC.getRssURL()+chatrooms.toString());
-				TimeUnit.SECONDS.sleep(1);
+				//TimeUnit.SECONDS.sleep(1);
 //				if(i == 5)
 //					System.out.println("111");
 //				if(i>4)
@@ -208,7 +208,7 @@ public class ClientMain  implements IClientCallinface{
 				e.printStackTrace();
 			}
 		}
-		new ClientMain(connectNum).start();
+		new wtbClientMain(connectNum).start();
 	}
 
 
