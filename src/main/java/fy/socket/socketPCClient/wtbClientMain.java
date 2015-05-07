@@ -19,7 +19,7 @@ public class wtbClientMain  implements IClientCallinface{
 
 	
 	private final static int PORT = 8866;
-	private final static String HOST = "222.201.139.162";// "localhost";
+	private final static String HOST = "222.201.139.159";// "localhost";
 	
 	private IWebsocketClientObject clientObject;
 	private int initUserNum = 0;
