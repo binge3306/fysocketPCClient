@@ -62,9 +62,9 @@ public class LoggerUtil {
 				logger.addHandler(handler);
 			}
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			 logger.log(Level.SEVERE,"error 异常"+e.toString());
 		} catch (IOException e) {
-			e.printStackTrace();
+			 logger.log(Level.SEVERE,"error 异常"+e.toString());
 		} finally{
 			
 		}
